@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>William Tjandra</title>
-    <script src="./Components\Fluid\dat.gui.min.js"></script>
+    <script src="./Components\Fluid/dat.gui.min.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <style>
         * {
             user-select: none;
@@ -23,9 +24,33 @@
         .dg.ac {
             display: none;
         }
-        canvas {
+        .canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height:100%;
+            height: 100%;
+            z-index: -1; /* Ensure canvas is behind other elements */
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .card {
+            margin-top: 5%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            height: 200px;
+            color: aliceblue;
+            background-color: grey;
+            border-radius: 10px;
         }
     </style>
 
@@ -37,9 +62,14 @@
 
 </head>
 <body>
-    <canvas></canvas>
-
-
+    <div class="canvas-container">
+        <canvas></canvas>
+    </div>
+    <div class="body-container">
+        <div class="card" data-tilt data-tilt-reverse data-tilt-glare>Test</div>
+    </div>
+    
+    
     <script src="./Components\Fluid\script.js"></script>
 </body>
 </html>
