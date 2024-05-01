@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>William Tjandra</title>
+    <link href="https://fonts.cdnfonts.com/css/coolvetica" rel="stylesheet">
     <script src="./Components\Fluid/dat.gui.min.js"></script>
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <style>
@@ -40,27 +41,39 @@
             height: 100%;
         }
         .body-container {
-            margin-top: 5%;
+            margin-top: -5%;
             margin-left: auto;
             margin-right: auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 1000px;
-            height: 500px;
+            width:  95%;
+            height: 900px;
 
         }
 
         .card {
-
+            font-family: 'Coolvetica', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 1000px;
-            height: 500px;
-            color: aliceblue;
+            width: 100%;
+            height: 600px;
             background-color: grey;
             border-radius: 10px;
+        }
+
+        .name-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: aliceblue;
+            font-size: 50px;
+        }
+
+        .text-container {
+            color: rgba(240, 248, 255, 0.664);
+            font-size: 25px;
         }
     </style>
 
@@ -72,11 +85,20 @@
 
 </head>
 <body>
-    <div class="canvas-container">
-        <canvas></canvas>
-    </div>
     <div class="body-container">
-        <div class="card" data-tilt data-tilt-reverse="true" data-tilt-glare></div>
+        <div class="card" data-tilt  data-tilt-glare data-tilt-max-glare="0.25" data-tilt-max="5" data-tilt-speed="400">
+            <div class="canvas-container">
+                <canvas></canvas>
+            </div>
+            <div>
+                <p class="name-container">
+                    William Tjandra
+                </p>
+                <p class="text-container">
+                    In the pause of slumber, dreams awaken, weaving whispers of the subconscious into the tapestry of the mind's silent symphony.
+                </p>
+            </div>
+        </div>
     </div>
     
     
