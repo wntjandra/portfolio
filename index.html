@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William Tjandra</title>
-    <link href="https://fonts.cdnfonts.com/css/coolvetica" rel="stylesheet">
-    <script src="./Components\Fluid/dat.gui.min.js"></script>
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
     <style>
         * {
             user-select: none;
@@ -59,7 +56,7 @@
             align-items: center;
             width: 100%;
             height: 100%;
-            background-color: grey;
+            background-color: transparent;
             border-radius: 10px;
         }
 
@@ -138,8 +135,38 @@
         box-shadow: none;
         transform: translateY(0);
         }
+
+        iframe {
+            position: absolute;
+            border: 0px;
+            padding: 0px;
+            top: 10%;
+            left: 25%;
+            width:800px;
+            height: 600px;
+        }
+
+        .popup {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            z-index: -99;
+        }
+
+        .popup.visible {
+            opacity: 1;
+            transform: translateY(0);
+            z-index: 99;
+        }
     </style>
 
+
+    <title>William Tjandra</title>
+    <link href="https://fonts.cdnfonts.com/css/coolvetica" rel="stylesheet">
+    <script src="./Components/Fluid/dat.gui.min.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/three.js/104/three.js"></script>
+    
     <script>
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
         ga('create', 'UA-105392568-1', 'auto');
@@ -164,19 +191,19 @@
                 </div>
     
                 <div class="button-container"> 
-                    <button class="button-27">
+                    <button class="button-27" id="ResumeBtn">
                         Resume
                     </button>
     
-                    <button class="button-27">
+                    <button class="button-27" id="WorkExpBtn">
                         Work Experience
                     </button>
     
-                    <button class="button-27">
+                    <button class="button-27" id="PersonExpBtn">
                         Personal Experience
                     </button>
 
-                    <button class="button-27">
+                    <button class="button-27" id="AboutMeBtn">
                         About me
                     </button>
                 </div>
@@ -184,15 +211,69 @@
         </div>
     </div>
     
+    <iframe class="popup" src="./Components/Popups/Resume.html" id="ResumeContent"></iframe>
+    <iframe class="popup" src="./Components/Popups/WorkExp.html" id="WorkExpContent"></iframe>
+    <iframe class="popup" src="./Components/Popups/PersonExp.html" id="PersonExpContent"></iframe>
+    <iframe class="popup" src="./Components/Popups/AboutMe.html" id="AboutMeContent"></iframe>
     
-    <script src="./Components\Fluid\script.js"></script>
+    
 </body>
 </html>
 
 
-
+<script src="./Components/Fluid/script.js"></script>
 <script>
     window.addEventListener("load", () => {
         console.log("This function is executed once the page is fully loaded");
     });
+
+    function isClickedOutside(event) {
+        var resumeContent = document.getElementById("ResumeContent");
+        var resumeBtn = document.getElementById("ResumeBtn");
+        if (!resumeContent.contains(event.target) && event.target !== resumeBtn) {
+            resumeContent.classList.remove('visible');
+        }
+
+        var workExpContent = document.getElementById("WorkExpContent");
+        var workExpBtn = document.getElementById("WorkExpBtn");
+        if (!workExpContent.contains(event.target) && event.target !== workExpBtn) {
+            workExpContent.classList.remove('visible');
+        }
+
+        var personExpContent = document.getElementById("PersonExpContent");
+        var personExpBtn = document.getElementById("PersonExpBtn");
+        if (!personExpContent.contains(event.target) && event.target !== personExpBtn) {
+            personExpContent.classList.remove('visible');
+        }
+
+        var aboutMeContent = document.getElementById("AboutMeContent");
+        var aboutMeBtn = document.getElementById("AboutMeBtn");
+        if (!aboutMeContent.contains(event.target) && event.target !== aboutMeBtn) {
+            aboutMeContent.classList.remove('visible');
+        }
+    }
+
+    // Event listener to close the iframe when clicking outside of it
+    document.addEventListener('click', isClickedOutside);
+
+    document.getElementById("ResumeBtn").onclick = function() {
+        var content = document.getElementById("ResumeContent");
+        content.classList.toggle('visible');
+    };
+
+    document.getElementById("WorkExpBtn").onclick = function() {
+        var content = document.getElementById("WorkExpContent");
+        content.classList.toggle('visible');
+    };
+
+    document.getElementById("PersonExpBtn").onclick = function() {
+        var content = document.getElementById("PersonExpContent");
+        content.classList.toggle('visible');
+    };
+
+    document.getElementById("AboutMeBtn").onclick = function() {
+        var content = document.getElementById("AboutMeContent");
+        content.classList.toggle('visible');
+    };
+
 </script>
