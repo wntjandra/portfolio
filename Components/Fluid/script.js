@@ -34,12 +34,12 @@ let config = {
     SIM_RESOLUTION: 128,
     DYE_RESOLUTION: 1024,
     CAPTURE_RESOLUTION: 512,
-    DENSITY_DISSIPATION: 1,
+    DENSITY_DISSIPATION: 3,
     VELOCITY_DISSIPATION: 0.2,
-    PRESSURE: 0.8,
+    PRESSURE: 0.4,
     PRESSURE_ITERATIONS: 20,
-    CURL: 30,
-    SPLAT_RADIUS: 0.25,
+    CURL: 10,
+    SPLAT_RADIUS: 0.2,
     SPLAT_FORCE: 6000,
     SHADING: true,
     COLORFUL: true,
@@ -855,7 +855,8 @@ let bloomFramebuffers = [];
 let sunrays;
 let sunraysTemp;
 
-let ditheringTexture = createTextureAsync('LDR_LLL1_0.png');
+// Removed:
+// let ditheringTexture = createTextureAsync('LDR_LLL1_0.png');
 
 const blurProgram            = new Program(blurVertexShader, blurShader);
 const copyProgram            = new Program(baseVertexShader, copyShader);
@@ -1213,7 +1214,8 @@ function render (target) {
         drawColor(target, normalizeColor(config.BACK_COLOR));
     if (target == null && config.TRANSPARENT)
         drawCheckerboard(target);
-    drawDisplay(target);
+    // Removed:
+    // drawDisplay(target);
 }
 
 function drawColor (target, color) {
@@ -1228,24 +1230,25 @@ function drawCheckerboard (target) {
     blit(target);
 }
 
-function drawDisplay (target) {
-    let width = target == null ? gl.drawingBufferWidth : target.width;
-    let height = target == null ? gl.drawingBufferHeight : target.height;
+// Removed:
+// function drawDisplay (target) {
+//     let width = target == null ? gl.drawingBufferWidth : target.width;
+//     let height = target == null ? gl.drawingBufferHeight : target.height;
 
-    displayMaterial.bind();
-    if (config.SHADING)
-        gl.uniform2f(displayMaterial.uniforms.texelSize, 1.0 / width, 1.0 / height);
-    gl.uniform1i(displayMaterial.uniforms.uTexture, dye.read.attach(0));
-    if (config.BLOOM) {
-        gl.uniform1i(displayMaterial.uniforms.uBloom, bloom.attach(1));
-        gl.uniform1i(displayMaterial.uniforms.uDithering, ditheringTexture.attach(2));
-        let scale = getTextureScale(ditheringTexture, width, height);
-        gl.uniform2f(displayMaterial.uniforms.ditherScale, scale.x, scale.y);
-    }
-    if (config.SUNRAYS)
-        gl.uniform1i(displayMaterial.uniforms.uSunrays, sunrays.attach(3));
-    blit(target);
-}
+//     displayMaterial.bind();
+//     if (config.SHADING)
+//         gl.uniform2f(displayMaterial.uniforms.texelSize, 1.0 / width, 1.0 / height);
+//     gl.uniform1i(displayMaterial.uniforms.uTexture, dye.read.attach(0));
+//     if (config.BLOOM) {
+//         gl.uniform1i(displayMaterial.uniforms.uBloom, bloom.attach(1));
+//         gl.uniform1i(displayMaterial.uniforms.uDithering, ditheringTexture.attach(2));
+//         let scale = getTextureScale(ditheringTexture, width, height);
+//         gl.uniform2f(displayMaterial.uniforms.ditherScale, scale.x, scale.y);
+//     }
+//     if (config.SUNRAYS)
+//         gl.uniform1i(displayMaterial.uniforms.uSunrays, sunrays.attach(3));
+//     blit(target);
+// }
 
 function applyBloom (source, destination) {
     if (bloomFramebuffers.length < 2)
