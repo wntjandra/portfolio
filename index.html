@@ -83,6 +83,9 @@
         .text-container {
             color: rgba(240, 248, 255, 0.664);
             font-size: 25px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .button-container {
@@ -141,23 +144,27 @@
             position: absolute;
             border: 0px;
             padding: 0px;
-            top: 5%;
-            left: 15%;
-            width:1100px;
-            height: 650px;
+            width:100%;
+            height: 100%;
         }
 
         .popup {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease;
-            z-index: -99;
+            z-index: -50;
         }
 
         .popup.visible {
             opacity: 1;
             transform: translateY(0);
+            z-index: 50;
+        }
+
+        .frameXButton {
             z-index: 99;
+            top: 0%;
+            right: 0%;
         }
     </style>
 
@@ -178,7 +185,7 @@
 </head>
 <body>
     <div class="body-container">
-        <div class="card" data-tilt  data-tilt-glare data-tilt-max-glare="0.18" data-tilt-max="5" data-tilt-speed="400">
+        <div class="card" data-tilt  data-tilt-glare data-tilt-max-glare="0.05" data-tilt-max="2" data-tilt-speed="400">
             <div class="canvas-container">
                 <canvas></canvas>
             </div>
@@ -188,7 +195,7 @@
                         William Tjandra
                     </p>
                     <p class="text-container">
-                        In the pause of slumber, dreams awaken, weaving whispers of the subconscious into the tapestry of the mind's silent symphony.
+                        A lover of problem solving. A lover of programming. A lover of all things computer related. Worked mostly in Full-Stack Web development, but have experience in mobile development, back-end servers, and firmware/software development. My hobbies are playing and making games
                     </p>
                 </div>
     
@@ -210,13 +217,31 @@
                     </button>
                 </div>
             </div>
+            <button class="frameXButton" style="position: absolute;" onclick="closeIframe()">Close HTML in Iframe</button>
+
+            <iframe class="popup" src="./Components/Popups/WorkExp.html" id="WorkExpContent"></iframe>
+            <iframe class="popup" src="./Components/Popups/PersonExp.html" id="PersonExpContent"></iframe>
+            <iframe class="popup" src="./Components/Popups/AboutMe.html" id="AboutMeContent"></iframe> 
+            
+            
+
+            <script>
+                // Function to close the HTML within the iframe
+                function closeIframe() {
+                  // Access the parent document and remove the iframe element
+                  var parentDocument = window.parent.document;
+                  var iframe = parentDocument.getElementById('myIframe');
+                  if (iframe) {
+                    iframe.parentNode.removeChild(iframe);
+                  }
+                }
+              </script>
         </div>
+
+        <iframe class="popup" src="./Components/Popups/Resume.html" style="pointer-events: all; width: 70%; height: 100%;" id="ResumeContent"></iframe>
+       
     </div>
     
-    <iframe class="popup" src="./Components/Popups/Resume.html" id="ResumeContent"></iframe>
-    <iframe class="popup" src="./Components/Popups/WorkExp.html" id="WorkExpContent"></iframe>
-    <iframe class="popup" src="./Components/Popups/PersonExp.html" id="PersonExpContent"></iframe>
-    <iframe class="popup" src="./Components/Popups/AboutMe.html" id="AboutMeContent"></iframe> 
     
     
 </body>

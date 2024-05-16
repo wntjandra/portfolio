@@ -1,20 +1,94 @@
 <style>
-    html,body {
+    /* html,body {
         padding: 0px;
         margin: 0px;
         background-color: transparent;
         border-color: rgb(44, 43, 43);
     }
 
-    .abtme-body {
+    .workexp-body {
         width:100%;
         height:100%;
         background-color: rgb(44, 43, 43);
-    }
+    } */
+/* 
+    @import "compass/css3"; */
+
+/* ------------------------------------------- *\
+	Main
+\* ------------------------------------------- */
+html {
+	background: #DAD8DB;
+  text-align: center;
+}
+body {
+	font: 16px sans-serif;
+	color: #000;
+}
+.wrapper {
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  top: 100px;
+  left: 50%;
+  margin-left: -408px;
+  border: 8px solid #000;
+}
+.btn {
+  position: absolute;
+  top: 615px;
+  right: -8px;
+  background: #000;
+  border-bottom: 2px solid #fff;
+  a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    color: #fff;
+  }
+}
+/* ------------------------------------------- *\
+	Background Image
+\* ------------------------------------------- */
+.bg-image {
+	display: block;
+	position: absolute;
+  width: 800px;
+  height: 600px;
+}
+/* ------------------------------------------- *\
+	Drawing
+\* ------------------------------------------- */
+.drawing {
+	position: relative;
+}
+.drawing > * {
+	position: absolute;
+  top: 0;
+  left: 0;
+}
 </style>
+<head>
+    
+</head>
 
-<body >
-    <div class="abtme-body">
-
+<div class="wrapper">
+    <img class="bg-image main animated" src="https://images.unsplash.com/photo-1442589031151-61d5645469d7?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=12154afe0240145e09bdad8a752d4fd6" alt="">
+    
+    <div class="drawing ui-corner-all animated">
+         <canvas id="draw-refract"></canvas>
+         <canvas id="draw-reflect"></canvas>
+         <canvas id="draw-fractures"></canvas>
+         <canvas id="draw-mainline"></canvas>
+         <canvas id="draw-noise"></canvas>
+         <canvas id="draw-debug" style="display: none;"></canvas>
+         <div id="draw-picker"></div>
     </div>
-</body>
+    
+    <div class="btn"><a href="#">Clear the canvas</a></div>
+   
+  </div>
+
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="module"src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script defer src="../Glass/Glass.js"></script>
