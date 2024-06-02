@@ -3,307 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        * {
-            user-select: none;
-        }
-        html,
-        body {
-            overflow: hidden;
-            background-color: black;
-        }
-        body {
-            margin:0;
-            position:fixed;
-            width: 100%;
-            height:100%
-        }
-        .dg.ac {
-            display: none;
-        }
-        .canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Ensure canvas is behind other elements */
-            pointer-events: none;
-        }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .body-container {
-            margin-top: 2.5%;
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width:  90%;
-            height: 90%;
-
-        }
-
-        .card {
-            font-family: 'Coolvetica', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-            border-radius: 10px;
-        }
-
-        .grid-container {
-            pointer-events: none;
-            display: grid;
-            grid-template-rows: auto auto; /* Two rows, one for text and one for buttons */
-            row-gap: 20px; /* Adjust as needed */
-        }
-
-        .text-body-container {
-            pointer-events: none;
-        }
-
-        .name-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: aliceblue;
-            font-size: 50px;
-        }
-
-        .text-container {
-            color: rgba(240, 248, 255, 0.664);
-            font-size: 25px;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .button-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr; /* Two columns with equal width */
-            grid-template-rows: auto; /* Auto-sized rows */
-            gap: 20px; /* Gap between grid items */
-            
-        }
-
-        /* CSS */
-        .button-27 {
-            pointer-events: all;
-            appearance: none;
-            background-color: #000000;
-            border: 2px solid #1A1A1A;
-            border-radius: 15px;
-            box-sizing: border-box;
-            color: #FFFFFF;
-            cursor: pointer;
-            display: inline-block;
-            font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-            font-size: 16px;
-            font-weight: 600;
-            line-height: normal;
-            margin: 0;
-            min-height: 60px;
-            min-width: 0;
-            outline: none;
-            padding: 16px 24px;
-            text-align: center;
-            text-decoration: none;
-            transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            width: 100%;
-            will-change: transform;
-        }
-
-        .button-27:disabled {
-        pointer-events: none;
-        }
-
-        .button-27:hover {
-        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-        transform: translateY(-2px);
-        }
-
-        .button-27:active {
-        box-shadow: none;
-        transform: translateY(0);
-        }
-
-        iframe {
-            position: absolute;
-            border: 0px;
-            padding: 0px;
-            width:100%;
-            height: 100%;
-        }
-
-        .popup {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            z-index: -50;
-        }
-
-        .popup.visible {
-            opacity: 1;
-            transform: translateY(0);
-            z-index: 50;
-        }
-
-        .frameXButton {
-            z-index: 99;
-            top: 0%;
-            right: 0%;
-        }
-    </style>
-
-
     <title>William Tjandra</title>
-    <link rel="icon" type="image/x-icon" href="./Public/TestLine.PNG">
-    <link href="https://fonts.cdnfonts.com/css/coolvetica" rel="stylesheet">
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    
-    <script>
-        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-        ga('create', 'UA-105392568-1', 'auto');
-        ga('send', 'pageview');
-    </script>
-    
-
-    <script defer src="./Components/Fluid/script.js"></script>
+    <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
-    <div class="body-container">
-        <div class="card" data-tilt  data-tilt-glare data-tilt-max-glare="0.05" data-tilt-max="2" data-tilt-speed="400">
-            <div class="canvas-container">
-                <canvas></canvas>
+    <header>
+        <div class="header-grid-container">
+            <div class="header-grid-item"><img class="vscode-icon" src="public/vscode_icon.svg"></div>
+            <div class="header-grid-item">File</div>
+            <div class="header-grid-item">Edit</div>
+            <div class="header-grid-item">Selection</div>
+            <div class="header-grid-item">View</div>
+            <div class="header-grid-item">Go</div>
+            <div class="header-grid-item">Run</div>
+            <div class="header-grid-item">Terminal</div>
+            <div class="header-grid-item">Help</div>
+            <div class="header-grid-item" style="justify-content: end!important;">
+                <img src="public/Arrow_left_light.svg">
+                <img src="public/Arrow_right_light.svg">
             </div>
-            <div class="grid-container">
-                <div class="text-body-container">
-                    <p class="name-container">
-                        William Tjandra
-                    </p>
-                    <p class="text-container">
-                        A lover of problem solving. A lover of programming. A lover of all things computer related. Worked mostly in Full-Stack Web development, but have experience in mobile development, back-end servers, and firmware/software development. My hobbies are playing and making games
-                    </p>
-                </div>
-    
-                <div class="button-container"> 
-                    <button class="button-27" id="ResumeBtn">
-                        Resume
-                    </button>
-    
-                    <button class="button-27" id="WorkExpBtn">
-                        Work Experience
-                    </button>
-    
-                    <button class="button-27" id="PersonExpBtn">
-                        Projects
-                    </button>
-
-                    <button class="button-27" id="AboutMeBtn">
-                        About me
-                    </button>
+            <div class="header-grid-item">
+                <div class="search-bar">
+                    <img class="search-icon" src="public/search_icon.svg">
+                    William Tjandra - Visual Studio Code Portfolio
                 </div>
             </div>
-            <button class="frameXButton" style="position: absolute;" onclick="closeIframe()">Close HTML in Iframe</button>
+            <div class="header-grid-item"></div>
 
-            <iframe class="popup" src="./Components/Popups/WorkExp.html" id="WorkExpContent"></iframe>
-            <iframe class="popup" src="./Components/Popups/PersonExp.html" id="PersonExpContent"></iframe>
-            <iframe class="popup" src="./Components/Popups/AboutMe.html" id="AboutMeContent"></iframe> 
-            
-            
-
-            <script>
-                // Function to close the HTML within the iframe
-                function closeIframe() {
-                  // Access the parent document and remove the iframe element
-                  var parentDocument = window.parent.document;
-                  var iframe = parentDocument.getElementById('myIframe');
-                  if (iframe) {
-                    iframe.parentNode.removeChild(iframe);
-                  }
-                }
-              </script>
+            <div class="header-grid-item">
+                <img class="terminal-icon" src="public/terminal_icons/leftside.svg">
+            </div>
+            <div class="header-grid-item">
+                <img class="terminal-icon" src="public/terminal_icons/bottomside.svg">
+            </div>
+            <div class="header-grid-item">
+                <img class="terminal-icon" src="public/terminal_icons/midside.svg">
+            </div>
+            <div class="header-grid-item">
+                <img class="terminal-icon" src="public/terminal_icons/seperate.svg">
+            </div>
+            <div class="header-grid-item">
+                <img src="public/menu_icons/Close_line.svg">
+            </div>
+            <div class="header-grid-item">
+                <img src="public/menu_icons/Mimize.png">
+            </div>
+            <div class="header-grid-item">
+                <img src="public/menu_icons/Close_square_light.svg">
+            </div>
         </div>
-
-        <iframe class="popup" src="./Components/Popups/Resume.html" style="pointer-events: all; width: 70%; height: 100%;" id="ResumeContent"></iframe>
-       
+    </header>
+    
+    <div class="body-grid-container ">
+        <div class="nav">
+            <div class="nav-item selected">
+                <img src="public/nav_icons/file.svg">
+            </div>
+            <div class="nav-item">
+                <img src="public/search_icon.svg">
+            </div>
+            <div class="nav-item">
+                <img src="public/nav_icons/gitIcon.svg">
+            </div>
+            <div class="nav-item">
+                <img src="public/nav_icons/resume_icon.svg">
+            </div>
+            <div class="nav-item">
+                <img style="width: 35px!important;" src="public/nav_icons/link_alt.svg">
+            </div>
+            <div class="nav-blank"></div>
+            <div class="nav-item">
+                <img style="width: 35px!important;" src="public/nav_icons/User_cicrle_light.svg">
+            </div>
+            <div class="nav-item">
+                <img style="width: 35px!important;" src="public/nav_icons/Setting_line_light.svg">
+            </div>
+        </div>
+        <div class="explorer">
+            <div class="title">
+                EXPLORER
+            </div>
+            <div class="body">
+                <div class="items">
+                    <div>
+                        >
+                    </div>
+                    <div>
+                        PORTFOLIO
+                    </div>
+                </div>
+                <div>
+                    <div class="items">
+                        home
+                    </div>
+                    <div class="items">
+                        work_experience
+                    </div>
+                    <div class="items">
+                        personal_projects
+                    </div>
+                    <div class="items">
+                        resume
+                    </div>
+                    <div class="items">
+                        contact
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="document">
+            
+        </div>
     </div>
     
-    
-    
+    <footer>
+        Updated 6/2/2024 - Made by William Tjandra designed in Figma and used pure HTML, CSS, JS
+    </footer>
+
 </body>
 </html>
-
-<script>
-    window.addEventListener("load", () => {
-        console.log("This function is executed once the page is fully loaded");
-        var canvasContainers = document.getElementsByClassName("canvas-container");
-        for (var i = 0; i < canvasContainers.length; i++) {
-            canvasContainers[i].style.pointerEvents = "all";
-        }
-
-    });
-
-    function isClickedOutside(event) {
-        var resumeContent = document.getElementById("ResumeContent");
-        var resumeBtn = document.getElementById("ResumeBtn");
-        if (!resumeContent.contains(event.target) && event.target !== resumeBtn) {
-            resumeContent.classList.remove('visible');
-        }
-
-        var workExpContent = document.getElementById("WorkExpContent");
-        var workExpBtn = document.getElementById("WorkExpBtn");
-        if (!workExpContent.contains(event.target) && event.target !== workExpBtn) {
-            workExpContent.classList.remove('visible');
-        }
-
-        var personExpContent = document.getElementById("PersonExpContent");
-        var personExpBtn = document.getElementById("PersonExpBtn");
-        if (!personExpContent.contains(event.target) && event.target !== personExpBtn) {
-            personExpContent.classList.remove('visible');
-        }
-
-        var aboutMeContent = document.getElementById("AboutMeContent");
-        var aboutMeBtn = document.getElementById("AboutMeBtn");
-        if (!aboutMeContent.contains(event.target) && event.target !== aboutMeBtn) {
-            aboutMeContent.classList.remove('visible');
-        }
-    }
-
-    // Event listener to close the iframe when clicking outside of it
-    document.addEventListener('click', isClickedOutside);
-
-    document.getElementById("ResumeBtn").onclick = function() {
-        var content = document.getElementById("ResumeContent");
-        content.classList.toggle('visible');
-    };
-
-    document.getElementById("WorkExpBtn").onclick = function() {
-        var content = document.getElementById("WorkExpContent");
-        content.classList.toggle('visible');
-    };
-
-    document.getElementById("PersonExpBtn").onclick = function() {
-        var content = document.getElementById("PersonExpContent");
-        content.classList.toggle('visible');
-    };
-
-    document.getElementById("AboutMeBtn").onclick = function() {
-        var content = document.getElementById("AboutMeContent");
-        content.classList.toggle('visible');
-    };
-
-</script>

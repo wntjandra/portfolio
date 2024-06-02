@@ -1,0 +1,166 @@
+html, body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+header {
+    background-color: #1f1f1f;
+    color: #898989;
+    text-align: center;
+    height: 35px;
+    display: flex;
+    align-items: center; /* Center items vertically */
+    font-size: 14px;
+}
+
+footer {
+    background-color: #1f1f1f;
+    color: #898989;
+    height: 20px;
+    font-size: 12px;
+}
+
+
+.header-grid-container {
+    display: grid;
+    grid-template-columns:  0.5fr /* icon */
+                            0.5fr /* file */
+                            0.5fr /* edit */
+                            0.5fr /* selection */
+                            0.5fr /* view */
+                            0.5fr /* go */
+                            0.5fr /* run */
+                            0.5fr /* terminal */
+                            0.5fr /* help */
+                            3fr /* arrow bar */
+                            10fr /* search */
+                            5fr/* longspace */
+                            0.5fr
+                            0.5fr
+                            0.5fr
+                            0.5fr
+                            0.5fr
+                            0.5fr
+                            0.5fr;
+
+                            
+    gap: 10px; /* Gap between grid items */
+    padding: 0px;
+    margin: 0px;
+    height: 30px;
+    width: 100%;
+}
+
+.header-grid-item {
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content within each grid item */
+    height: 30px;
+}
+
+.vscode-icon {
+    height: 60%;
+}
+
+.terminal-icon {
+    height: 50%;
+}
+
+.search-bar {
+    height: 75%; 
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    border: 1px solid hsla(0, 0%, 54%, 0.486); 
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.search-icon {
+    height: 70%;
+    margin-right: 5px;
+    
+}
+
+.body-grid-container {
+    display: grid;
+    grid-template-columns:  50px
+                            180px
+                            1fr;
+    padding: 0px;
+    margin: 0px;
+    height: calc(100vh - 55px);
+}
+
+.nav {
+    background-color: #181818;
+    color: white;
+    height: 100%;
+    border-top: 1px solid #2b2b2b;
+    border-right: 1px solid #2b2b2b;
+    border-bottom: 1px solid #2b2b2b;
+    justify-content: center;
+}
+
+.nav-item {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-item img{
+    width: 25px;
+
+}
+
+.nav-item.selected {
+    filter: brightness(150%);
+    border-left: 2px solid #0078d4a9;
+}
+
+.nav-blank {
+    width: 100%;
+    height: calc(100vh - 420px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.explorer {
+    background-color: #181818;
+    color: #d7d7d7;
+    height: 100%;
+    border-top: 1px solid #2b2b2b;
+    border-right: 1px solid #2b2b2b;
+    border-bottom: 1px solid #2b2b2b;
+}
+
+.explorer .title {
+    font-size: 10px;
+    padding: 15px;
+}
+
+.explorer .body {
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+.explorer .items {
+    padding: 2px;
+}
+
+.document {
+    background-color: #181818;
+    color: white;
+    height: 100%;
+    border-top: 1px solid #2b2b2b;
+    border-bottom: 1px solid #2b2b2b;
+}
