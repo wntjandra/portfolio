@@ -5,10 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/contact.css">
 </head>
-<body>
+<body class="code-section">
+    <div class="code-number">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>10</span>
+        <span>11</span>
+        <span>12</span>
+        <span>13</span>
+        <span>14</span>
+    </div>
     <div class="contact-container">
-        Contacts (WIP)
+        <div>
+            <span class="angle-bracket-yellow">{</span>
+        </div>
+        <div style="margin-left: 50px;">
+            <span class="content-title">"Contact Info"</span>
+            <span> : </span>
+            <span class="angle-bracket-pink">{</span>
+        </div>
+        <div style="margin-left: 100px;">
+            <span class="content" onclick="goToLink('mailto:williamtj2001@gmail.com')">"Email"</span>
+            <span> : </span>
+            <span class="content-class-text">"williamtj2001@gmail.com"</span>
+        </div>
+        <div style="margin-left: 100px;">
+            <span class="content" onclick="goToLink('https://www.linkedin.com/in/william-tjandra-a88422194')">"LinkedIn"</span>
+            <span> : </span>
+            <span class="content-class-text">"william-tjandra-a88422194"</span>
+        </div>
+        <div style="margin-left: 100px;">
+            <span class="content" onclick="goToLink('https://github.com/wntjandra')">"GitHub"</span>
+            <span> : </span>
+            <span class="content-class-text">"wntjandra"</span>
+        </div>
+        <div style="margin-left: 100px;">
+            <span class="content" onclick="goToLink('tel:+17786811579')">"Phone"</span>
+            <span> : </span>
+            <span class="content-class-text">"+1 778-681-1579"</span>
+        </div>
+        <div style="margin-left: 50px;">
+            <span class="angle-bracket-pink">}</span>
+        </div>
+        <div>
+            <span class="angle-bracket-yellow">}</span>
+        </div>
     </div>
     
 </body>
 </html>
+
+<script>
+    function goToLink(url) {
+    window.open(url);
+  }
+  </script>
+  

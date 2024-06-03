@@ -4,11 +4,175 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/aboutme.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 </head>
 <body>
     <div class="aboutme-container">
-        About me (WIP)
+        <div>
+            <span class="content-title">
+                ## About William Nathaniel Tjandra
+            </span>
+        </div>
+        <hr/>
+        <div>
+            <span class="content selected" id="typing-container1"></span>
+            <div class="card" data-tilt >
+                <img    data-tilt 
+                        data-tilt-max="5" 
+                        data-tilt-speed="10"
+                        src="../public/SFU-block-logo.png"
+                        style="display: none; padding: 20px;"
+                        id="sfu-card">
+            </div>
+            <span class="content" id="typing-container2"></span>
+        </div>
     </div>
     
 </body>
 </html>
+
+<script>
+    let stopTyping = false; // Flag to indicate whether typing should stop
+    let typingTimeout; // Variable to store the timeout ID
+    let curPhase = 1;
+    const typingContainer1 = document.getElementById('typing-container1');
+    const typingContainer2 = document.getElementById('typing-container2');
+    const sfuCard = document.getElementById('sfu-card');
+        
+    
+    function startTyping() {
+        function type(text, time, typingContainer) {
+            let index = 0; // Initialize index here
+            return new Promise(resolve => {
+                function typeNextCharacter() {
+                    if (!stopTyping && index < text.length) { // Check if typing should continue
+                        typingContainer.textContent += text.charAt(index);
+                        index++;
+                        typingTimeout = setTimeout(typeNextCharacter, time); // Store the timeout ID
+                    } else {
+                        resolve(); // Resolve the promise when typing is complete or stopped
+                    }
+                }
+                typeNextCharacter(); // Start typing the text
+            });
+        }
+
+        function waitForSomeTime(time) {
+            return new Promise(resolve => {
+                typingTimeout = setTimeout(() => {
+                    resolve();
+                }, time);
+            });
+        }
+
+        function incrementCurPhase(){
+            return new Promise(resolve => {
+                typingTimeout = setTimeout(() => {
+                    curPhase = curPhase + 1;
+                    console.log(curPhase);
+                    resolve();
+                }, 10);
+            });
+        }
+
+        function displayItem(item, time){
+            return new Promise(resolve => {
+                typingTimeout = setTimeout(() => {
+                    item.style.display = ''
+                    resolve();
+                }, time);
+            });
+        }
+        
+        function toggleSelection(){
+            return new Promise(resolve => {
+                typingTimeout = setTimeout(() => {
+                    typingContainer1.classList.remove('selected');
+                    typingContainer2.classList.add('selected');
+                    resolve();
+                }, 10);
+            });
+        }
+
+        const bodyMessage1 = "\n I am a Software Systems Major and a Math Minor graduate student from SFU";
+
+        const bodyMessage2 = "\n I have done many personal/work projects for back-end servers (including databases), mobile and full stack web dev.\n" +
+                            " However, I have branched to many different areas such as firmware and embedded systems.\n" +
+                            " I enjoy the challenges of troubleshooting and problem solving, and I love coding!"
+                            
+        
+        if (curPhase == 1)
+        {
+            waitForSomeTime(250)
+            .then(() => type("Hey!", 50,typingContainer1))
+            .then(() => waitForSomeTime(750))
+            .then(() => type(" So uh...", 50,typingContainer1))
+            .then(() => waitForSomeTime(750))
+            .then(() => type(" Where do I begin?", 50,typingContainer1))
+            .then(() => incrementCurPhase())
+            .then(() => waitForSomeTime(750))
+            .then(() => type(bodyMessage1, 40,typingContainer1))
+            .then(() => displayItem(sfuCard, 40))
+            .then(() => incrementCurPhase())
+            .then(() => toggleSelection())
+            .then(() => type(bodyMessage2, 40,typingContainer2))
+            .then(() => incrementCurPhase());
+        }
+        if (curPhase == 2)
+        {
+            waitForSomeTime(250)
+            .then(() => type(bodyMessage1, 40,typingContainer1))
+            .then(() => displayItem(sfuCard, 40))
+            .then(() => incrementCurPhase())
+            .then(() => toggleSelection())
+            .then(() => type(bodyMessage2, 40,typingContainer2))
+            .then(() => incrementCurPhase());
+        }
+        if (curPhase == 3)
+        {
+            waitForSomeTime(250)
+            .then(() => toggleSelection())
+            .then(() => type(bodyMessage2, 40,typingContainer2))
+            .then(() => incrementCurPhase());
+        }
+    }
+
+    function cleanUp() {
+        stopTyping = true; // Set flag to stop typing
+        clearTimeout(typingTimeout); // Clear the timeout if it's still active
+        
+        if (curPhase == 1)
+        {
+            typingContainer1.textContent = "";
+            sfuCard.style.display = "none";
+        }
+        if (curPhase == 2)
+        {
+            typingContainer1.textContent = "Hey! So uh... Where do I begin?";
+            sfuCard.style.display = "none";
+        }
+        if (curPhase == 3)
+        {
+            typingContainer1.textContent = "Hey! So uh... Where do I begin?\n I am a Software Systems Major and a Math Minor graduate student from SFU\n";
+            typingContainer2.textContent = "";
+            sfuCard.style.display = "";
+        }
+
+
+    }
+
+    window.addEventListener('message', function(event) {
+        if (event.data.type === 'urlChange') {
+            if (event.data.itemId === 'clean') {
+                cleanUp();
+            } else if (event.data.itemId === "aboutme") {
+                stopTyping = false;
+                startTyping();
+            }
+        }
+    });
+
+
+
+
+</script>
