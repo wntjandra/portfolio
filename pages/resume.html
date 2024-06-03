@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/resume.css">
+</head>
+<body>
+    <div class="resume-container">
+        <code class="code-section">
+            
+            <button class="switch-button" id="switch-btn">
+                Switch to light mode (WIP)
+            </button>
+        </code>
+       <iframe id="lightmode" hidden  src="../public/resumes/ResumeLightmode.pdf"></iframe>
+       <iframe id="darkmode" src="../public/resumes/ResumeDarkmode.pdf"></iframe>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    document.getElementById("switch-btn").onclick = function () {
+        if (document.getElementById("lightmode").hasAttribute('hidden')) {
+            document.getElementById("darkmode").setAttribute('hidden', "")
+            document.getElementById("lightmode").removeAttribute('hidden')
+            document.getElementById("switch-btn").textContent = "Switch to dark mode (WIP)"
+        }
+        else {
+            document.getElementById("lightmode").setAttribute('hidden', "")
+            document.getElementById("darkmode").removeAttribute('hidden')
+            document.getElementById("switch-btn").textContent = "Switch to light mode (WIP)"
+        }
+        
+    }
+</script>

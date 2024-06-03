@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>William Tjandra</title>
-    <link rel="stylesheet" href="styles/home.css">
+    <link rel="icon" href="public/vscode_icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
     <header>
@@ -56,26 +57,26 @@
     
     <div class="body-grid-container ">
         <div class="nav">
-            <div class="nav-item selected">
+            <div class="nav-item selected" id="side-menu-home">
                 <img src="public/nav_icons/file.svg">
             </div>
-            <div class="nav-item">
+            <div class="nav-item" id="side-menu-experience">
                 <img src="public/search_icon.svg">
             </div>
-            <div class="nav-item">
+            <div class="nav-item" id="side-menu-project">
                 <img src="public/nav_icons/gitIcon.svg">
             </div>
-            <div class="nav-item">
+            <div class="nav-item" id="side-menu-resume">
                 <img src="public/nav_icons/resume_icon.svg">
             </div>
-            <div class="nav-item">
+            <div class="nav-item" id="side-menu-contact">
                 <img style="width: 35px!important;" src="public/nav_icons/link_alt.svg">
             </div>
             <div class="nav-blank"></div>
-            <div class="nav-item">
+            <div class="nav-item" id="side-menu-aboutme">
                 <img style="width: 35px!important;" src="public/nav_icons/User_cicrle_light.svg">
             </div>
-            <div class="nav-item">
+            <div class="nav-item" id="side-menu-setting">
                 <img style="width: 35px!important;" src="public/nav_icons/Setting_line_light.svg">
             </div>
         </div>
@@ -84,35 +85,81 @@
                 EXPLORER
             </div>
             <div class="body">
-                <div class="items">
+                <div class="top-title" style="display: flex;">
                     <div>
-                        >
+                        <img src="public/Expand_down_light.svg">
                     </div>
-                    <div>
+                    <div hidden>
+                        <img src="public/Expand_right_light.svg">
+                    </div>
+                    <div style="padding: 1px; margin-left: 5px;">
                         PORTFOLIO
                     </div>
                 </div>
                 <div>
-                    <div class="items">
-                        home
+                    <div class="items" id="explorer-home">
+                        <img style="width: 12px" src="public/file_icons/html.svg">
+                        Home.html
                     </div>
-                    <div class="items">
-                        work_experience
+                    <div class="items" id="explorer-aboutme">
+                        <img style="width: 12px" src="public/file_icons/json.svg">
+                        AboutMe.json
                     </div>
-                    <div class="items">
-                        personal_projects
+                    <div class="items" id="explorer-experience">
+                        <img style="width: 12px" src="public/file_icons/js.svg">
+                        Experience.js
                     </div>
-                    <div class="items">
-                        resume
+                    <div class="items" id="explorer-project">
+                        <img style="width: 12px" src="public/file_icons/css.svg">
+                        Projects.css
                     </div>
-                    <div class="items">
-                        contact
+                    <div class="items" id="explorer-resume">
+                        <img style="width: 12px" src="public/file_icons/adobe.svg">
+                        Resume.pdf
+                    </div>
+                    <div class="items" id="explorer-contact">
+                        <img style="width: 12px" src="public/file_icons/markdown.svg">
+                        Contact.md
                     </div>
                 </div>
             </div>
         </div>
         <div class="document">
-            
+            <div class="nav">
+                <div class="items selected" id="document-topbar-home">
+                    <img style="width: 14px;margin-right: 5px;" src="public/file_icons/html.svg">
+                    Home.html
+                </div>
+                <div class="items" id="document-topbar-aboutme">
+                    <img style="width: 14px;margin-right: 5px;" src="public/file_icons/json.svg">
+                    AboutMe.json
+                </div>
+                <div class="items" id="document-topbar-experience">
+                    <img style="width: 14px;margin-right: 5px;" src="public/file_icons/js.svg">
+                    Experience.js
+                </div>
+                <div class="items" id="document-topbar-project">
+                    <img style="width: 12px;margin-right: 5px;" src="public/file_icons/css.svg">
+                    Projects.css
+                </div>
+                <div class="items" id="document-topbar-resume">
+                    <img style="width: 14px;margin-right: 5px;" src="public/file_icons/adobe.svg">
+                    Resume.pdf
+                </div>
+                <div class="items" id="document-topbar-contact">
+                    <img style="width: 10px;margin-right: 5px;" src="public/file_icons/markdown.svg">
+                    Contact.md
+                </div>
+            </div>
+            <div class="body">
+                <iframe src="pages/home.html" id="iframe-home"  style="width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/aboutme.html" id="iframe-aboutme" hidden style="width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/experience.html" id="iframe-experience" hidden style="width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/project.html" id="iframe-project" hidden style="width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/resume.html" id="iframe-resume" hidden style="width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/contact.html" id="iframe-contact" hidden style="width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/setting.html" id="iframe-setting" hidden style="width: 100%; height: 100%;"></iframe>
+            </div>
         </div>
     </div>
     
@@ -122,3 +169,75 @@
 
 </body>
 </html>
+
+<script>
+    const menuItems = ["home", "aboutme", "experience", "project", "resume", "contact"];
+
+
+    function setupMenuHandlers() {
+        const sideMenu = "side-menu-";
+        const explorer = "explorer-";
+        const topbar = "document-topbar-";
+        menuItems.forEach(itemId => {
+            const sideMenuElement = document.getElementById(sideMenu + itemId);
+            if (sideMenuElement) {
+                sideMenuElement.onclick = function() {
+                    handleMenuClick(itemId);
+                };
+            }
+
+            const explorerElement = document.getElementById(explorer + itemId);
+            if (explorerElement) {
+                explorerElement.onclick = function() {
+                    handleMenuClick(itemId);
+                };
+            }
+
+            const topbarElemenet = document.getElementById(topbar + itemId);
+            if (topbarElemenet) {
+                topbarElemenet.onclick = function() {
+                    handleMenuClick(itemId);
+                };
+            }
+        });
+    }
+
+    // Function to handle the onclick event
+    function handleMenuClick(itemId) {
+        const sideMenu = "side-menu-";
+        const topbar = "document-topbar-";
+        const iframe = "iframe-"
+
+        menuItems.forEach(itemId => {
+            document.getElementById(sideMenu + itemId).classList.remove('selected');
+            document.getElementById(topbar + itemId).classList.remove('selected');
+            document.getElementById(iframe + itemId).setAttribute('hidden', '');
+        });
+        document.getElementById(sideMenu + "setting").classList.remove('selected');
+        document.getElementById(sideMenu + "setting").setAttribute('hidden', '');
+
+        document.getElementById(sideMenu + itemId).classList.add('selected');
+        document.getElementById(topbar + itemId).classList.add('selected');
+        document.getElementById(iframe + itemId).removeAttribute('hidden');
+    }
+
+    document.getElementById("side-menu-setting").onclick = function ()
+    {
+        const sideMenu = "side-menu-";
+        const topbar = "document-topbar-";
+        const iframe = "iframe-"
+
+        menuItems.forEach(itemId => {
+            document.getElementById(sideMenu + itemId).classList.remove('selected');
+            document.getElementById(topbar + itemId).classList.remove('selected');
+            document.getElementById(iframe + itemId).setAttribute('hidden', '');
+        });
+
+        document.getElementById(sideMenu + "setting").classList.add('selected');
+        document.getElementById(iframe + "setting").removeAttribute('hidden');
+    }
+
+    // Call the setup function when the page loads
+    window.onload = setupMenuHandlers;
+
+</script>
