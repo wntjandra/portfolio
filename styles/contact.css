@@ -1,4 +1,50 @@
+.code-number span {
+    display: inline-block;
+    text-align: right;
+    width: 50px;
+}
+
 .contact-container {
     font-weight: 600;
     color: #d7d7d7;
+    font-size: 40px;
+}
+.code-section {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap:30px;
+    overflow: hidden;
+    cursor:default;
+}
+
+.code-number {
+    font-weight: 600;
+    color: #413f3f;
+    font-size: 40px;
+}
+
+
+.angle-bracket-yellow {
+    color: #f1d710;
+}
+
+.angle-bracket-pink {
+    color: #da63a1;
+}
+
+.content-title {
+    color: #68cdfe;
+}
+
+.content {
+    color: #68cdfe;
+    cursor: pointer;
+}
+
+.content:hover {
+    filter: brightness(150%);
+}
+
+.content-class-text {
+    color: #c3915b;
 }

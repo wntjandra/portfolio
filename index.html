@@ -102,8 +102,8 @@
                         Home.html
                     </div>
                     <div class="items" id="explorer-aboutme">
-                        <img style="width: 12px" src="public/file_icons/json.svg">
-                        AboutMe.json
+                        <img style="width: 12px" src="public/file_icons/markdown.svg">
+                        AboutMe.md
                     </div>
                     <div class="items" id="explorer-experience">
                         <img style="width: 12px" src="public/file_icons/JS.svg">
@@ -118,8 +118,8 @@
                         Resume.pdf
                     </div>
                     <div class="items" id="explorer-contact">
-                        <img style="width: 12px" src="public/file_icons/markdown.svg">
-                        Contact.md
+                        <img style="width: 12px" src="public/file_icons/json.svg">
+                        Contact.json
                     </div>
                 </div>
             </div>
@@ -131,8 +131,8 @@
                     Home.html
                 </div>
                 <div class="items" id="document-topbar-aboutme">
-                    <img style="width: 14px;margin-right: 5px;" src="public/file_icons/json.svg">
-                    AboutMe.json
+                    <img style="width: 14px;margin-right: 5px;" src="public/file_icons/markdown.svg">
+                    AboutMe.md
                 </div>
                 <div class="items" id="document-topbar-experience">
                     <img style="width: 14px;margin-right: 5px;" src="public/file_icons/JS.svg">
@@ -147,24 +147,24 @@
                     Resume.pdf
                 </div>
                 <div class="items" id="document-topbar-contact">
-                    <img style="width: 10px;margin-right: 5px;" src="public/file_icons/markdown.svg">
-                    Contact.md
+                    <img style="width: 10px;margin-right: 5px;" src="public/file_icons/json.svg">
+                    Contact.json
                 </div>
             </div>
             <div class="body">
-                <iframe src="pages/home.html" id="iframe-home"  style="width: 100%; height: 100%;"></iframe>
-                <iframe src="pages/aboutme.html" id="iframe-aboutme" hidden style="width: 100%; height: 100%;"></iframe>
-                <iframe src="pages/experience.html" id="iframe-experience" hidden style="width: 100%; height: 100%;"></iframe>
-                <iframe src="pages/project.html" id="iframe-project" hidden style="width: 100%; height: 100%;"></iframe>
-                <iframe src="pages/resume.html" id="iframe-resume" hidden style="width: 100%; height: 100%;"></iframe>
-                <iframe src="pages/contact.html" id="iframe-contact" hidden style="width: 100%; height: 100%;"></iframe>
-                <iframe src="pages/setting.html" id="iframe-setting" hidden style="width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/home.html" id="iframe-home" style="display: none; width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/aboutme.html" id="iframe-aboutme" style=" width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/experience.html" id="iframe-experience" style="display: none; width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/project.html" id="iframe-project" style="display: none; width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/resume.html" id="iframe-resume" style="display: none; width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/contact.html" id="iframe-contact" style="display: none; width: 100%; height: 100%;"></iframe>
+                <iframe src="pages/setting.html" id="iframe-setting" style="display: none; width: 100%; height: 100%;"></iframe>
             </div>
         </div>
     </div>
     
     <footer>
-        Updated 6/2/2024 - Made by William Tjandra designed in Figma and used pure HTML, CSS, JS
+        Updated 6/2/2024 - Made by William Tjandra designed in Figma and developed using pure HTML, CSS, JS
     </footer>
 
 </body>
@@ -172,12 +172,12 @@
 
 <script>
     const menuItems = ["home", "aboutme", "experience", "project", "resume", "contact"];
-
+    const sideMenu = "side-menu-";
+    const topbar = "document-topbar-";
+    const iframe = "iframe-"
+    const explorer = "explorer-";
 
     function setupMenuHandlers() {
-        const sideMenu = "side-menu-";
-        const explorer = "explorer-";
-        const topbar = "document-topbar-";
         menuItems.forEach(itemId => {
             const sideMenuElement = document.getElementById(sideMenu + itemId);
             if (sideMenuElement) {
@@ -202,40 +202,43 @@
         });
     }
 
-    // Function to handle the onclick event
-    function handleMenuClick(itemId) {
-        const sideMenu = "side-menu-";
-        const topbar = "document-topbar-";
-        const iframe = "iframe-"
-
+    function clearAllSelections() {
         menuItems.forEach(itemId => {
             document.getElementById(sideMenu + itemId).classList.remove('selected');
             document.getElementById(topbar + itemId).classList.remove('selected');
-            document.getElementById(iframe + itemId).setAttribute('hidden', '');
+            document.getElementById(iframe + itemId).style.display = 'none';
+            document.getElementById(iframe + itemId)
+                .contentWindow.postMessage({ type: 'urlChange', itemId: "clean"}, '*');
         });
+    }
+
+    // Function to handle the onclick event
+    function handleMenuClick(itemId) {
+        clearAllSelections();
+
         document.getElementById(sideMenu + "setting").classList.remove('selected');
-        document.getElementById(sideMenu + "setting").setAttribute('hidden', '');
+        document.getElementById(iframe + "setting").style.display = 'none';
 
         document.getElementById(sideMenu + itemId).classList.add('selected');
         document.getElementById(topbar + itemId).classList.add('selected');
-        document.getElementById(iframe + itemId).removeAttribute('hidden');
+        document.getElementById(iframe + itemId).style.display = '';
+
+        document.getElementById(iframe + itemId)
+                .contentWindow.postMessage({ type: 'urlChange', itemId: itemId }, '*');
     }
 
     document.getElementById("side-menu-setting").onclick = function ()
     {
-        const sideMenu = "side-menu-";
-        const topbar = "document-topbar-";
-        const iframe = "iframe-"
-
-        menuItems.forEach(itemId => {
-            document.getElementById(sideMenu + itemId).classList.remove('selected');
-            document.getElementById(topbar + itemId).classList.remove('selected');
-            document.getElementById(iframe + itemId).setAttribute('hidden', '');
-        });
+        clearAllSelections();
 
         document.getElementById(sideMenu + "setting").classList.add('selected');
-        document.getElementById(iframe + "setting").removeAttribute('hidden');
+        document.getElementById(iframe + "setting").style.display = '';
+
+        document.getElementById(iframe + itemId)
+                .contentWindow.postMessage({ type: 'urlChange', itemId: itemId}, '*');
     }
+
+
 
     // Call the setup function when the page loads
     window.onload = setupMenuHandlers;

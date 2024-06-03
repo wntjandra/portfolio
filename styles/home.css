@@ -1,9 +1,25 @@
+.code-section {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap:30px;
+    overflow: hidden;
+}
+
+.code-number {
+    font-weight: 600;
+    color: #413f3f;
+    font-size: 40px;
+}
+
+.code-number span {
+    display: inline-block;
+    text-align: right;
+    width: 50px;
+}
+
 .home-container {
     font-weight: 600;
     color: #d7d7d7;
-}
-
-.home-container{
     font-size: 40px;
 }
 
