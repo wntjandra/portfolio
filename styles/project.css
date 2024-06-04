@@ -1,5 +1,77 @@
 .project-container {
     font-weight: 600;
     color: #d7d7d7;
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center; 
+}
+
+
+.content {
+    width: 400px;
+    height: 525px;
+    background-color: #1f1f1f;
+    border: 1px solid #d7d7d7;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column; /* This will stack children vertically */
+    justify-content: center;
+    align-items: center; /* Align center horizontally */
+    font-size: 20px;
+}
+
+.content-header {
+    width: 100%; /* Make the header span the full width */
+    height: 20px;
+    display: flex;
+    align-items: start;
+    justify-content: start; /* Center the text horizontally */
+    padding: 10px;
+}
+
+.content-header .title {
+    color: #d7983d;
+    padding-right: 10px;
+}
+
+.content-header .bracket {
+    color: #ffc814;
+    padding-right: 10px;
+}
+
+.content-footer {
+    width: 100%; /* Make the header span the full width */
+    height: 10px;
+    color: #ffc814;
+    display: flex;
+    align-items: start;
+    justify-content: start; /* Center the text horizontally */
+}
+
+.content-body {
+    width: 95%;
+    margin-left:5%;
+    height: 80%;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+.content-body .til{
+    padding: 5px;
+}
+
+.content-body .variable {
+    color: #9cdcfe;
+}
+
+.content-body .text {
+    color: #ce9178;
 }
 

@@ -10,7 +10,7 @@
         <code class="code-section">
             
             <button class="switch-button" id="switch-btn">
-                Switch to light mode (WIP)
+                Switch to light mode
             </button>
         </code>
        <iframe id="lightmode" hidden  src="../public/resumes/ResumeLightmode.pdf"></iframe>
@@ -25,12 +25,12 @@
         if (document.getElementById("lightmode").hasAttribute('hidden')) {
             document.getElementById("darkmode").setAttribute('hidden', "")
             document.getElementById("lightmode").removeAttribute('hidden')
-            document.getElementById("switch-btn").textContent = "Switch to dark mode (WIP)"
+            document.getElementById("switch-btn").textContent = "Switch to dark mode"
         }
         else {
             document.getElementById("lightmode").setAttribute('hidden', "")
             document.getElementById("darkmode").removeAttribute('hidden')
-            document.getElementById("switch-btn").textContent = "Switch to light mode (WIP)"
+            document.getElementById("switch-btn").textContent = "Switch to light mode"
         }
         
     }
