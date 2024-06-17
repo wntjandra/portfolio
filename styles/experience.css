@@ -1,3 +1,8 @@
+html,body{
+    height:125%;
+    overflow: hidden;
+}
+
 .experience-container {
     color: #d7d7d7;
     display: flex;
@@ -5,7 +10,7 @@
     height: 100%;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
 }
 
 .content-header {
@@ -43,13 +48,13 @@
     justify-content: center;
     align-items: center;
     font-size: 30px;
-    
 }
 
 
-.card-items {
+.card {
+    box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.5);
     padding: 25px;
-    width:40%;
+    width:425px;
     height: 80%;
     margin: 50px;
     background-color: #181818;
@@ -58,6 +63,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
+
 }
 
 .card-images{
@@ -77,19 +83,76 @@
     align-items: start;
 }
 
-.code-item {
-    font-size: 14px;
-    color:#ce9178;
-    border: 1px solid #ce9178;
-    border-radius: 20px;
-    padding: 5px 10px 5px 10px;
-    margin: 3px;
-
-}
-
 .center-container {
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.code-item {
+    font-size: 14px;
+    border-radius: 20px;
+    padding: 5px 10px 5px 10px;
+    margin: 3px;
+}
+
+.code-item.bisque {
+    color:#ce9178;
+    border: 1px solid #ce9178;
+}
+
+.code-item.blue {
+    color:#61dafb;
+    border: 1px solid #61dafb;
+}
+.code-item.green {
+    color:#439934;
+    border: 1px solid #439934;
+}
+
+.code-item.purple {
+    color:#BC4ABC;
+    border: 1px solid #BC4ABC;
+}
+
+.load-more {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: sizeChange 1.5s ease-in-out infinite; /* Adjust timing as needed */
+}
+
+@keyframes sizeChange {
+    0%, 100% {
+        transform: scale(1.05); /* Start and end position (no movement) */
+    }
+    50% {
+        transform: scale(1); /* Move up */
+    }
+}
+
+.content-body-more {
+    height: calc(100vh - 90px);
+    width: 90%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    z-index:-99;
+    transform: translateY(-550px); /* Initial position */
+    transition: transform 0.8s ease; /* Smooth transition */
+}
+
+.content-body-more.translated {
+
+    transform: translateY(-50px);
+}
+
+.content-more-text {
+    font-size: 18px;
 }
