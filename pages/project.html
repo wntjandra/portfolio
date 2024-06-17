@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="../styles/project.css">
 </head>
 <body>
-    <div class="project-container">
-        <div class="content">
+    <div class="project-container" id="content-container">
+        <!-- <div class="content">
             <div class="content-header">
                 <span class="title">.SnapDuck</span>
                 <span class="bracket">{</span>
@@ -72,8 +72,125 @@
             <div class="content-footer">
                 <span>}</span>
             </div>
-        </div>
+        </div> -->
     </div>
     
 </body>
 </html>
+
+<script>
+    // Array of data to populate
+    const dataList = [
+        {
+            title: ".Snap Duck",
+            variables: [
+                { name: "Date", text: "Feb 2022" },
+                { name: "Flutter Git Link", text: "github.com/wntjandra/Flutter-Duck" },
+                { name: "TensorFlow Git Link", text: "github.com/wntjandra/DuckDuckGo" },
+                { name: "Desc", text: "Developed a motion tracking Flutter app with a duck face filter based on a picture of a duck. Utilized OpenCV for motion tracking and TensorFlow to create the duck filter model. App achieved 4th place in the FallHacks 2022 duck-themed hackathon." }
+            ]
+        },
+        {
+            title: ".Bilby-S Compiler",
+            variables: [
+                { name: "Date", text: "Sept 2022 - Dec 2022" },
+                { name: "Git Link", text: "github.com/wntjandra/CMPT379Bilby" },
+                { name: "Desc", text: "Custom Made compiler for a basic script written using Java, Assembly, and Perl. It can compile basic control statements (while, if, for, foreach, continue, break), do basic operations (add, sub, divide, mod), create functions, type casts (and auto promotions), and has basic data structures" }
+            ]
+        },
+        {
+            title: ".MountainHack Discord Bot",
+            variables: [
+                { name: "Date", text: "Feb 2021" },
+                { name: "Git Link", text: "github.com/wntjandra/MountainHacks-2021-LGC" },
+                { name: "Desc", text: "Discord bot using Discord API and Tomcat Springboot backend which communicated using REST API. The Discord bot allows the students to raise issues, ask questions, create suggestions all in a centralized manner to the professors. The professors and students could also connect in an off topic manner as well to build a connection. Students can also make a profile in which other students can access and could potentially build a connection." }
+            ]
+        },
+        {
+            title: ".StormHacks Discord Bot",
+            variables: [
+                { name: "Date", text: "Feb 2021" },
+                { name: "Git Link", text: "github.com/wntjandra/LGC-StormHacks-2021" },
+                { name: "Desc", text: "Discord bot using Discord API and Tomcat Springboot backend which communicated using REST API. The Discord bot can also store the User's favourite books into a database help in REST API made with Springboot(Tomcat). Each individual User will have their own book list using this method." }
+            ]
+        },
+        {
+            title: ".Fatal_Enterprises",
+            variables: [
+                { name: "Date", text: "Aug 2023 - April 2024" },
+                { name: "Roblox Link", text: "roblox.com/games/15851416571/Pre-Alpha-Fatal-Enterprises" },
+                { name: "Desc", text: "Horror genre roblox game with AI pathfinding, and procedural generated content. Models developed purely using blender." }
+            ]
+        }
+        
+    ];
+
+    // Function to populate content for each data entry
+    function populateContent(dataList) {
+        const container = document.getElementById('content-container');
+
+        dataList.forEach(data => {
+            // Create content element
+            const content = document.createElement('div');
+            content.className = 'content';
+
+            // Create content header
+            const contentHeader = document.createElement('div');
+            contentHeader.className = 'content-header';
+            const titleSpan = document.createElement('span');
+            titleSpan.className = 'title';
+            titleSpan.textContent = data.title;
+            const bracketSpan = document.createElement('span');
+            bracketSpan.className = 'bracket';
+            bracketSpan.textContent = '{';
+            contentHeader.appendChild(titleSpan);
+            contentHeader.appendChild(bracketSpan);
+
+            // Create content body
+            const contentBody = document.createElement('div');
+            contentBody.className = 'content-body';
+
+            data.variables.forEach(variable => {
+                const tilDiv = document.createElement('div');
+                tilDiv.className = 'til';
+
+                const variableSpan = document.createElement('span');
+                variableSpan.className = 'variable';
+                variableSpan.textContent = variable.name;
+                const colonSpan = document.createElement('span');
+                colonSpan.textContent = ' : ';
+                const textSpan = document.createElement('span');
+                textSpan.className = 'text';
+                textSpan.textContent = `"${variable.text}"`;
+                const semicolonSpan = document.createElement('span');
+                semicolonSpan.textContent = ';';
+
+                tilDiv.appendChild(variableSpan);
+                tilDiv.appendChild(colonSpan);
+                tilDiv.appendChild(textSpan);
+                tilDiv.appendChild(semicolonSpan);
+
+                contentBody.appendChild(tilDiv);
+            });
+
+            // Create content footer
+            const contentFooter = document.createElement('div');
+            contentFooter.className = 'content-footer';
+            const closingBracketSpan = document.createElement('span');
+            closingBracketSpan.textContent = '}';
+            contentFooter.appendChild(closingBracketSpan);
+
+            // Append all parts to the content element
+            content.appendChild(contentHeader);
+            content.appendChild(contentBody);
+            content.appendChild(contentFooter);
+
+            // Append the content element to the container
+            container.appendChild(content);
+        });
+    }
+
+    // Call the function with the data list
+    populateContent(dataList);
+
+</script>
